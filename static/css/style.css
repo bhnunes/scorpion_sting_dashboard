@@ -1,0 +1,303 @@
+body {
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Added Roboto as primary */
+    margin: 0;
+    background-color: #f4f7f6; /* A slightly softer white */
+    color: #333;
+}
+
+/* Update header for better spacing and shadow */
+header {
+    background-color: #005f73;
+    color: white;
+    padding: 1rem 2rem; /* More horizontal padding */
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Use Flexbox on the main element to easily center content */
+main {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center;     /* Center horizontally */
+    padding: 2rem;
+    min-height: calc(100vh - 100px); /* Make main area fill the screen height minus the header */
+}
+
+
+/* Container for the welcome text and image */
+.welcome-container {
+    text-align: center; /* Center all text and inline elements inside */
+    max-width: 800px;   /* Prevent the text from becoming too wide on large screens */
+}
+
+.welcome-container h2 {
+    font-size: 2.5rem; /* Larger, more impactful title */
+    color: #003440;
+    margin-bottom: 1rem;
+}
+
+.welcome-container p {
+    font-size: 1.2rem;
+    color: #555;
+    line-height: 1.6; /* Improve readability */
+}
+
+/* The star of the show: our circular scorpion image */
+.scorpion-image {
+    width: 200px;  /* Control the size */
+    height: 200px;
+    border-radius: 50%; /* This is the magic that makes it a circle */
+    object-fit: cover;  /* Ensures the image fills the circle without distortion */
+    margin-top: 2.5rem; /* Space between the text and the image */
+    border: 5px solid #005f73; /* A nice border using our header color */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* A more pronounced shadow to make it pop */
+}
+
+
+/* --- New Styles for the Dashboard Page --- */
+
+.dashboard-main {
+    padding: 2rem;
+    background-color: #e9ecef; /* A light grey background for the main area */
+}
+
+/* KPI Card Styling */
+.kpi-container {
+    display: flex;
+    gap: 2rem; /* Space between cards */
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.kpi-card {
+    background-color: white;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    text-align: center;
+    flex-basis: 250px; /* Give cards a base width */
+}
+
+.kpi-card h3 {
+    margin: 0 0 0.5rem 0;
+    color: #555;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+.kpi-card p {
+    margin: 0;
+    color: #005f73;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Layout for Chart and Table */
+.dashboard-layout {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 2rem;
+}
+
+.chart-container {
+    flex: 3; /* Make the chart take up more space */
+    min-width: 400px;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.table-container {
+    flex: 2; /* The table takes up less space */
+    min-width: 300px;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+}
+
+.table-container h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Clean, modern table borders */
+}
+
+th, td {
+    padding: 0.8rem;
+    text-align: left; 
+    border-bottom: 1px solid #ddd;
+}
+
+/* Add this new rule to right-align only the numeric cells */
+.numeric-cell {
+    text-align: right;
+}
+
+thead th {
+    background-color: #f4f7f6;
+    font-weight: 700;
+    color: #333;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa; /* Highlight row on hover */
+}
+
+/* Ensure chart resizes properly */
+#chart {
+    width: 100%;
+    height: 100%;
+    min-height: 450px;
+}
+
+/* --- New Styles for the Prediction Page --- */
+
+.prediction-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-color: #f4f7f6;
+}
+
+.form-container, .result-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.form-container h3, .result-container h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 2rem;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #555;
+}
+
+.form-group select, .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+}
+
+.form-group select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+.btn-predict {
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #005f73;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-predict:hover {
+    background-color: #003440;
+}
+
+/* Result Display */
+.result-container {
+    text-align: center;
+}
+
+.result-container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0.5rem 0;
+}
+
+.result-container .probability {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #d9534f; /* A reddish color to indicate risk */
+    margin: 1rem 0;
+}
+
+.result-container small {
+    display: block;
+    margin-top: 1.5rem;
+    color: #888;
+    font-style: italic;
+}
+
+/* --- New Button for Prediction Restart --- */
+
+.btn-new {
+    display: inline-block; /* Allows for padding and margins */
+    width: calc(100% - 2rem); /* Full width with padding */
+    margin-top: 2rem;
+    padding: 1rem;
+    border: 2px solid #005f73;
+    border-radius: 4px;
+    background-color: white;
+    color: #005f73;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none; /* Removes underline from the <a> tag */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-new:hover {
+    background-color: #005f73;
+    color: white;
+}
+
+/* --- Footer and Disclaimer Styling --- */
+
+footer {
+    width: 100%;
+    padding: 2rem 0; /* Add some space above and below */
+    text-align: center; /* Center the text */
+    background-color: #e9ecef; /* Match the dashboard background color for a seamless look */
+    box-sizing: border-box; /* Ensures padding is included in the width calculation */
+}
+
+.disclaimer {
+    margin: 0; /* Remove default paragraph margin */
+    font-size: 0.9rem; /* Make it slightly smaller than the body text */
+    color: #6c757d; /* A soft grey color so it doesn't distract */
+    font-style: italic; /* A common style for source notes */
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📜 Histórico</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>📜 Histórico de Acidentes com Escorpiões</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">🏠︎ Home</a>
+            <a href="{{ url_for('prediction') }}">🧮 Predição</a>
+        </nav>
+    </header>
+    <main class="dashboard-main">
+        <!-- KPI Cards Section -->
+        <div class="kpi-container">
+            <div class="kpi-card">
+                <h3>Total de Acidentes 🦂</h3>
+                <p>{{ total_accidents }}</p>
+            </div>
+            <div class="kpi-card">
+                <h3>Total de Mortes 💀</h3>
+                <p>{{ total_deaths }}</p>
+            </div>
+        </div>
+
+        <!-- Main Content Area: Chart and Table -->
+        <div class="dashboard-layout">
+            <div class="chart-container">
+                <div id="chart"></div>
+            </div>
+            <div class="table-container">
+                <h3>Os 10 Municípios com mais Acidentes 🏆</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Município</th>
+                            <th class="numeric-cell">Total de Acidentes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for location in top_locations %}
+                        <tr>
+                            <td>{{ location.name }}</td>
+                            <td class="numeric-cell">{{ location.number_of_accidents }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p class="disclaimer">
+            Fonte: Sistema de Informação de Agravos de Notificação (SINAN) obtidos de 2007 a 2025.
+        </p>
+    </footer>
+    <script>
+        var graph = JSON.parse('{{ graphJSON | safe }}');
+        Plotly.newPlot('chart', graph.data, graph.layout, {responsive: true});
+    </script>
+</body>
+</html>

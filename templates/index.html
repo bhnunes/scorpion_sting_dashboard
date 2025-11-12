@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏠︎ Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Optional: Add a nice font from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>⚠️ Vigilância Preditiva de Picadas de Escorpião 🚨</h1>
+        <nav>
+            <a href="{{ url_for('dashboard') }}">📜 Histórico</a>
+            <a href="{{ url_for('prediction') }}">🧮 Predição</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="welcome-container">
+            <h2>Bem Vindo à plataforma de Integração de dados e inteligência artificial na prevenção de escorpionismo</h2>
+            <p>Esta plataforma oferece insights sobre incidentes de picadas de escorpião e disponibiliza uma ferramenta preditiva para avaliação de risco.</p>
+            
+            <!-- The new scorpion image -->
+            <img src="{{ url_for('static', filename='images/scorpion.jpg') }}" alt="A close-up image of a yellow scorpion" class="scorpion-image">
+        </div>
+    </main>
+</body>
+</html>

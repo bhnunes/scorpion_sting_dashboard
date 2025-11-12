@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧮 Predição</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🧮 Predição de Risco de Picadas de Escorpião</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">🏠︎ Home</a>
+            <a href="{{ url_for('dashboard') }}">📜 Histórico</a>
+        </nav>
+    </header>
+    <main class="prediction-main">
+        <div class="form-container">
+            <h3>Insira os Detalhes da Predição</h3>
+            <form action="{{ url_for('prediction') }}" method="post">
+                <!-- State Dropdown -->
+                <div class="form-group">
+                    <label for="state-select">1. Selecione o Estado (UF)</label>
+                    <select name="state" id="state-select" required>
+                        <option value="">-- Selecione o Estado --</option>
+                        {% for state in states %}
+                        <option value="{{ state }}" {% if user_input and user_input.state == state %}selected{% endif %}>{{ state }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- Municipality Dropdown (Initially Hidden) -->
+                <div class="form-group" id="municipality-wrapper" style="display: none;">
+                    <label for="municipality-select">2. Selecione o Município</label>
+                    <select name="municipality" id="municipality-select" required disabled>
+                        <option value="">-- Selecione o Município --</option>
+                    </select>
+                </div>
+
+                <!-- Date Picker -->
+                <div class="form-group">
+                    <label for="prediction-date">3. Selecione a Data da Predição</label>
+                    <input type="date" id="prediction-date" name="prediction_date" value="{{ user_input.prediction_date if user_input else '' }}" required>
+                </div>
+                
+                <button type="submit" class="btn-predict">Executar Predição</button>
+            </form>
+        </div>
+
+        {% if result %}
+        <div class="result-container">
+            <h3>Resultado da Predição</h3>
+            <p>Para <strong>{{ result.municipality }}, {{ result.state }}</strong>, o risco previsto de um acidente por picada de escorpião é:</p>
+            <p class="probability">{{ result.probability }}</p>
+            <small>Esta é uma previsão estatística baseada em dados históricos e fatores ambientais. Não é uma garantia de um evento real.</small>
+            
+            <!-- === NEW BUTTON HERE === -->
+            <a href="{{ url_for('prediction') }}" class="btn-new">Iniciar Nova Predição</a>
+            <!-- ======================= -->
+        </div>
+        {% endif %}
+
+    </main>
+
+    <!-- Link the new JavaScript file -->
+    <script src="{{ url_for('static', filename='js/prediction.js') }}"></script>
+</body>
+</html>

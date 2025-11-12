@@ -1,0 +1,11 @@
+Flask
+numpy==2.0.2
+pandas==2.2.2
+pyarrow==18.1.0
+joblib==1.5.2
+scikit-learn==1.6.1
+plotly==5.24.1
+Werkzeug
+lightgbm==4.6.0
+epiweeks==2.3.0
+python-dotenv==1.2.1
